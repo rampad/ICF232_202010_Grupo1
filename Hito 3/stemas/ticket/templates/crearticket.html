@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+</br>
+<h2>{{fecha}}---{{hora}}---{{user.id}}--{{user.username}}</h2>
+
+<div class="card " style="width: 60%; margin: auto;">
+  <div class="card-body">
+    <h4 class="card-tittle">Crea tu Ticket</h4>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="id_usuario_creador">Usuario</label> 
+            <input type="text" class="form-control" value={{user.username}}  disabled="disabled" >    
+            <input type="text" class="form-control" value={{user.id}}  name='usuario_creador' id="id_usuario_creador" hidden="True" >          
+            
+        </div>
+        <div class="form-group col-md-6">
+          <label for="id_codigo">Codigo Ticket</label>          
+            <input type="text" class="form-control" value={{random}}  disabled="disabled" > 
+            <input type="text"  class="form-control" value={{random}} name="codigo" id="id_codigo" hidden="True">          
+          
+        </div>  
+      </div>
+
+      <div class="row form-group" style=" width: 100%; margin-top: 1%; margin-left: 1%;">
+        <label for="id_area">Area</label>
+        <input class="form-control" type="text" name="area" id="id_area" required>
+      </div>
+      <div class="form-group">
+        <label for="id_prioridadarea">Prioridad</label>
+        <select class="form-control" id="id_prioridadarea" name="prioridadarea">
+          {% for panels in prioridades %}
+            <option value={{panels.sigla}} selected="selected">{{panels.sigla}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="row form-group" style=" width: 100%; margin-top: 1%; margin-left: 1%;">
+        <label for="id_resumen">Resumen Ticket</label>
+        <input class="form-control" type="text" name="resumen" id="id_resumen" required>
+      </div>
+      <div class="row form-group" style=" width: 100%; margin-top: 3%; margin-left: 1%;">
+        <label for="id_detalle">Detalle</label>
+        <textarea class="form-control" id="id_detalle" name="detalle" rows="3"></textarea>
+      </div>
+      <div class="row form-group">
+        <input class="form-control" type="text" value={{fecha}} name="fecha" id="id_fecha" hidden="True" required>
+      </div>
+      <div class="row form-group">
+        <input class="form-control" type="text" value={{hora}} name="hora" id="id_hora" hidden="True" required>
+      </div>
+      <div class="row form-group">
+        <input class="form-control" type="text" value="Activo" name="estado" id="id_estado" hidden="True" required>
+      </div>
+      
+        <button class="btn btn-info btn-block my-4" type="submit">Enviar</button>
+      
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

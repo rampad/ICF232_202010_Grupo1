@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% csrf_token %}
+
+<h2 style="margin: auto;">Gestion de Ticket</h2>
+
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Resumen</th>
+        <th scope="col">Usuario Creador</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for aa in ticket %}
+            <tr>
+                <th scope="row">{{aa.codigo}}</th>
+                <td>{{aa.resumen}}</td>
+                <td>{{aa.usuario_creador}}</td>
+                <td>{{aa.estado}}</td>
+                <td>  <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                      Accion
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                      <a class="dropdown-item" href="#">Abrir</a>
+                      <a class="dropdown-item" href="#">Editar</a>
+                      <a class="dropdown-item" href="#">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+<br>
+
+
+
+{% endblock %}

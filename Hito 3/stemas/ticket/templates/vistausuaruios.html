@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% csrf_token %}
+
+<h2 style="margin: auto;">Gestion de Usuario</h2>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Usaurio</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Habilitado</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for aa in usu %}
+            <tr>
+                <th scope="row">{{aa.username}}</th>
+                <td>{{aa.first_name}}</td>
+                <td>{{aa.email}}</td>
+                <td>{{aa.is_active}}</td>
+                <td>  
+                    
+                    
+                  <a type="button" class="btn btn-success" href="{% url 'usuario_edit' aa.id %}">Editar</a>
+                  <a type="button" class="btn btn-danger" href="{% url 'usuario_delete' aa.id %}">Eliminar</a>
+                    
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="{% url 'index' %}">Gestión de Ticket</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'panel' %}">Gestión de Ticket</a>
+        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'usuarios' %}">Gestión de Usuarios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/crearticket">Crear ticket</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            {{ user.username }}
+        </span>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
+</nav>
