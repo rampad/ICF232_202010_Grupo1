@@ -1,0 +1,49 @@
+{% extends "base2.html" %}
+
+{% block content %}
+</br>
+<div class="card " style="width: 40%; margin: auto;">
+    <div class="card-body">
+        <h4 class="card-tittle">Registro</h4>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" name="first_name" required>
+                </div>
+                <div class="col">
+                    <label>Apellido</label>
+                    <input type="text" class="form-control" placeholder="Apellido" name="last_name" required>
+                </div>
+            </div>
+            <div class="row form-group" style=" width: 100%; margin-top: 3%; margin-left: 1%;">
+                <label>Nombre de Usuario</label>
+                <input class="form-control"  type="text" name="username" required>
+            </div>           
+            <div class="row form-group" style=" width: 100%; margin-top: 3%; margin-left: 1%;">
+                <label>Correo</label>
+                <input type="email" class="form-control"  name="email" required>
+            </div>            
+            <div class="row form-group" style=" width: 100%; margin-top: 3%; margin-left: 1%;">
+                <label> Contraseña</label>
+                <input class="form-control" type="password" name="password1" required>
+                <small id="passwordHelpInline" class="text-muted">
+                    Must be 8-20 characters long.
+                  </small>
+            </div>          
+            <div class="row form-group" style=" width: 100%; margin-top: 3%; margin-left: 1%;">
+                <label>Contaseña (Confirmacion)</label>
+                <input class="form-control"  type="password" name="password2" required>
+            </div>       
+            <div class="row form-group" style=" margin: auto;">
+                <button class="btn btn-info btn-block my-4" type="submit">Registrar</button>            
+            <p>Volver
+                <a href="{% url 'index' %}">Iniciar Sesion</a>
+            </p>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

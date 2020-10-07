@@ -1,0 +1,18 @@
+Elementos en la web:
+crear usuario
+Activar/desactivar usuario
+Editar Usuario
+Eliminar Usuario
+Crear Ticket
+Login
+
+Listar tickets creados
+Listar usuarios en la BD
+
+////
+Usuario: admin
+Clave: Master8090
+
+Para crear un usuario, la contraseña debe de ser minimo 8 caracteres y alfanumerica con una minuscula
+si el registro es exitoso, se redirigira automaticamen a la pagina de login, para ingresar dicho usuario
+
